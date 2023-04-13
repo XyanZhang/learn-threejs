@@ -56,6 +56,7 @@ const planet = new THREE.Mesh(SphereGeometry, SphereMaterial);
 scene.add(planet);
 
 // 轨道
+// TorusGeometry (radius : Float, tube : Float, radialSegments : Integer, tubularSegments : Integer, arc : Float)
 const TorusGeometry = new THREE.TorusGeometry(150, 8, 2, 120);
 const TorusMaterial = new THREE.MeshLambertMaterial({
   color: 0x40a9ff,
@@ -65,6 +66,16 @@ const ring = new THREE.Mesh(TorusGeometry, TorusMaterial);
 ring.rotation.x = Math.PI / 2;
 ring.rotation.y = -0.1 * (Math.PI / 2);
 scene.add(ring);
+
+const TorusGeometry2 = new THREE.TorusGeometry(200, 8, 2, 120);
+const TorusMaterial2 = new THREE.MeshLambertMaterial({
+  color: 0x40a9ff,
+  wireframe: true
+});
+const ring2 = new THREE.Mesh(TorusGeometry2, TorusMaterial2);
+ring2.rotation.x = Math.PI * 0.75;
+ring2.rotation.y = -0.1 * (Math.PI / 2);
+scene.add(ring2);
 
 // 卫星
 const IcoGeometry = new THREE.IcosahedronGeometry(16, 0);
@@ -101,6 +112,8 @@ const tick = () => {
   planet && (planet.rotation.y += .005);
   // 星球轨道环位置动画
   ring && ring.rotateOnAxis(axis, Math.PI / 400);
+  
+  ring2 && ring2.rotateOnAxis(axis, Math.PI / 800);
   // 卫星位置动画
   satellite.position.x = 250 * Math.sin(radian);
   satellite.position.y = 100 * Math.cos(radian);
