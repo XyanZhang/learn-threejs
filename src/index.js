@@ -25,7 +25,10 @@ camera.position.z = 3;
 scene.add(camera);
 
 // 初始化网格
+// 立方体 
+// BoxGeometry(width : Float, height : Float, depth : Float, widthSegments : Integer, heightSegments : Integer, depthSegments : Integer)
 const geometry = new THREE.BoxGeometry(1, 1, 1);
+// 基础网格材质 MeshBasicMaterial(parameters: Object)
 const material = new THREE.MeshBasicMaterial({ color: 0x03c03c });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
